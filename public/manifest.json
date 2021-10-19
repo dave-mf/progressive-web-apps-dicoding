@@ -1,0 +1,15 @@
+{
+    "name": "Footbal-Info",
+    "gcm_sender_id": "6692947210",
+    "short_name": "FootInfo",
+    "description": "Informasi Klub Sepakbola",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#fff",
+    "theme_color": "#ee534f",
+    "icons": [{
+        "src": "icon.png",
+        "sizes": "512x512",
+        "type": "image/png"
+    }]
+}

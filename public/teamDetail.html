@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Footbal Info</title>
+    <meta name="description" content="Footbal Info" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="css/materialize.css" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#ee534f" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Navigasi -->
+    </nav>
+    <nav class="red lighten-1" role="navigation">
+        <div class="nav-wrapper container">
+          <a href="#" class="brand-logo" id="logo-container">Team Detail</a>
+          <a href="./index.html" class="sidenav-trigger" data-target="nav-mobile">
+            <i class="material-icons">arrow_back</i>
+          </a>
+          <ul class="topnav right hide-on-med-and-down"></ul>
+          <ul class="sidenav" id="nav-mobile"></ul>
+        </div>
+      </nav>
+    <!-- Akhir Navigasi -->
+    <div class="container" id="body-content"></div>
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large red" id="save">
+        <i class="large material-icons">save</i>
+        </a>
+    </div>
+    <!-- Save Button -->
+    <script src="js/materialize.min.js"></script>
+    <script src="js/api.js"></script>
+    <script>
+        // REQUEST API UNTUK PERTAMA KALI
+        document.addEventListener("DOMContentLoaded", function() {
+          var urlParams = new URLSearchParams(window.location.search);
+          var isFromSaved = urlParams.get("saved");
+          var btnSave = document.getElementById("save");
+          if (isFromSaved) {
+            // Hide fab jika dimuat dari indexed db
+            btnSave.style.display = 'none';
+            
+            // ambil artikel lalu tampilkan
+            getSavedTeamById();
+          } else {
+            var item = getTeamsById();
+          }
+          console.log(item)
+          btnSave.onclick = function() {
+            item.then(function(team) {
+              saveTeam(team);
+            });
+          };
+        });
+    </script>
+    <script src="js/idb.js"></script>
+    <script src="js/db.js"></script>
+
+</body>
+
+</html>
